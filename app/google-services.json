@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1056382471573",
+    "project_id": "fir-tutorial-rogarciap-2023",
+    "storage_bucket": "fir-tutorial-rogarciap-2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056382471573:android:491c1bb682b45b90f2ba9c",
+        "android_client_info": {
+          "package_name": "com.example.mobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056382471573-2c7tnqchjhh23fg6v1c5ikjogj63ror1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmmq-pdtbqrVYOT_5tZludFF46cg7jdwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056382471573-2c7tnqchjhh23fg6v1c5ikjogj63ror1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Mobile App</string>
+    <string name="prefs_file">com.example.mobileapp.PREFERENC_FILE_KEY</string>
+    <string name="default_web_client_secret">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</string>
+
+    <string name="facebook_app_id">1234</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
+</resources>
