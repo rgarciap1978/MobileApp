@@ -3,9 +3,16 @@ package com.example.mobileapp
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ktx.remoteConfig
 import kotlinx.android.synthetic.main.activity_home.*
+import java.lang.RuntimeException
+import java.util.*
+import kotlin.collections.HashMap
 
 enum class ProviderType {
     BASIC,
@@ -14,6 +21,8 @@ enum class ProviderType {
 }
 
 class HomeActivity : AppCompatActivity() {
+
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +40,29 @@ class HomeActivity : AppCompatActivity() {
         prefs.putString("email", email)
         prefs.putString("provider", provider)
         prefs.apply()
+
+        // Remote Config
+        errorButton.visibility = View.INVISIBLE
+        Firebase
+            .remoteConfig
+            .fetchAndActivate()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val showErrorButton = Firebase
+                        .remoteConfig
+                        .getBoolean("show_error_button")
+
+                    val errorButtonText = Firebase
+                        .remoteConfig
+                        .getString("error_button_text")
+
+                    if (showErrorButton) {
+                        errorButton.visibility = View.VISIBLE
+                    }
+
+                    errorButton.text = errorButtonText
+                }
+            }
     }
 
     private fun setup(email: String, provider: String) {
@@ -52,6 +84,33 @@ class HomeActivity : AppCompatActivity() {
 
             FirebaseAuth.getInstance().signOut()
             onBackPressed()
+        }
+
+        errorButton.setOnClickListener {
+            throw RuntimeException("Forzado de Error")
+        }
+
+        saveButton.setOnClickListener {
+
+            val map = hashMapOf(
+                "provider" to provider,
+                "address" to addressTextView.text.toString(),
+                "phone" to phoneTextView.text.toString()
+            )
+
+            db.collection("users").document(email).set(map)
+        }
+
+        getButton.setOnClickListener {
+            db.collection("users").document(email)
+                .get().addOnSuccessListener {
+                    addressTextView.setText(it.get("address") as String?)
+                    phoneTextView.setText(it.get("phone") as String?)
+                }
+        }
+
+        deleteButton.setOnClickListener {
+            db.collection("users").document(email).delete()
         }
     }
 }

@@ -40,6 +40,69 @@
             android:layout_height="8dp"
             android:layout_weight="1" />
 
+        <EditText
+            android:id="@+id/addressTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Calle, número, piso"
+            android:text="" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/phoneTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Teléfono"
+            android:text="" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Guardar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/getButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Recuperar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Eliminar" />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -51,8 +114,31 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/colorAccent"
-                android:text="Cerrar Sesión"
+                android:text="Cerrar Sesion"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/errorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#F50000"
+                android:text="Forzar Error"
                 android:textColor="@android:color/white" />
         </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
